@@ -59,9 +59,24 @@ module.exports = {
         ]
       },
       {
+        test: /antd.*\.less$/,
+        use: [{
+            loader: "style-loader"
+        }, {
+            loader: "css-loader" 
+        }, {
+            loader: "less-loader",
+            options: { javascriptEnabled: true }
+        },
+        //"postcss-loader"
+        ]
+      },
+      {
         test: /\.(png|jpg|gif)$/,
         use: [
-          'file-loader',
+          {
+            loader: 'file-loader',
+          }
         ],
       },
     ],
