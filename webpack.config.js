@@ -1,7 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
+const fs  = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+// To override antd default themes
+const lessToJs = require('less-vars-to-js');
+const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, './ant-theme-vars.less'), 'utf8'));
 
 const paths = {
   DIST: path.resolve(__dirname, 'dist'),
@@ -59,18 +64,31 @@ module.exports = {
         ]
       },
       {
-        test: /antd.*\.less$/,
+        test: /\.less$/,
         use: [{
             loader: "style-loader"
         }, {
             loader: "css-loader" 
         }, {
             loader: "less-loader",
-            options: { javascriptEnabled: true }
-        },
-        //"postcss-loader"
-        ]
+            options: { 
+              javascriptEnabled: true,
+              modifyVars: themeVariables
+            }
+        }]
       },
+      // {
+      //   test: /\.less$/,
+      //   use: [
+      //     {loader: "style-loader"},
+      //     {loader: "css-loader"},
+      //     {loader: "less-loader",
+      //       options: {
+      //         modifyVars: themeVariables
+      //       }
+      //     }
+      //   ]
+      // },
       {
         test: /\.(png|jpg|gif)$/,
         use: [

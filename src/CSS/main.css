@@ -2,3 +2,14 @@ h1{
     text-align: center;
     color: red;
 }
+Menu{
+    width: 1440px;
+    margin: 0 auto;
+}
+Button{
+    margin: 50px;
+}
+banner{
+    width: 100%;
+    height: auto;
+}
