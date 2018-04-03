@@ -1,9 +1,7 @@
 h1{
     text-align: center;
-    color: red;
 }
 Menu{
-    width: 1440px;
     margin: 0 auto;
 }
 Button{
@@ -13,3 +11,23 @@ banner{
     width: 100%;
     height: auto;
 }
+container{
+    background-color: aliceblue;
+    height: 200px;
+    position: relative;
+    z-index: 1;
+}
+slick-dots{
+    background-color: red;
+}
+/* .ant-carousel .slick-slide {
+    text-align: center;
+    height: 160px;
+    line-height: 160px;
+    background: #364d79;
+    overflow: hidden;
+  }
+  
+  .ant-carousel .slick-slide h3 {
+    color: #fff;
+  } */
