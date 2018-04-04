@@ -20,6 +20,18 @@ container{
 slick-dots{
     background-color: red;
 }
+calender{
+    font-size: 80px;
+    margin: auto;
+    display: block;
+}
+speakers{
+    position: relative;
+    top: 40vw;
+    height: 1200px; 
+    background: #000; 
+    padding: 50px 30px 30px 50px;
+}
 /* .ant-carousel .slick-slide {
     text-align: center;
     height: 160px;
