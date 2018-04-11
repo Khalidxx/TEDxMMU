@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ScrollableAnchor, { goToAnchor } from 'react-scrollable-anchor'
+import ScrollableAnchor, { goToAnchor, configureAnchors } from 'react-scrollable-anchor'
 import { Avatar, Button, Card, Carousel, Divider, Layout, Menu, Icon, Tooltip, Row, Col} from 'antd';
 const { Header, Content, Footer } = Layout
 
@@ -15,13 +15,14 @@ export default class MainApp extends Component {
         }
     }
     handleClick(e){
+        goToAnchor(e.key);
         console.log('click ', e);
-        goToAnchor(e);
       }
     scroll(position){
         goToAnchor(position);
     }
     render(){
+        configureAnchors({offset: -60, scrollDuration: 500});
         return(
             <Layout className='layout'>      
                 <Menu
@@ -43,10 +44,11 @@ export default class MainApp extends Component {
                 <img src = "./src/Assets/DSC_0605.jpg" style={{width: '100%', height: '100%', backgroundSize: "cover", 
                             backgroundPosition:'center', position: 'fixed', display: 'block', top: 0, left: 0, zIndex: 0}}/>
                 
-                <Col span={12}><Button type="primary" style={{position: 'relative', top: '33vw', marginRight: '10px', float:'right'}} >Get Tickets</Button></Col>
-                <Col span={12}><Button style={{position: 'relative', top: '33vw', marginLeft: '10px', float:'left'}}>Share</Button></Col>
+                <Col span={12}><Button type="primary" style={{position: 'relative', top: '33vw', marginRight: '10px', float:'right'}} onClick={() => window.location = "https://goo.gl/7R2oHe"}>Get Tickets</Button></Col>
+                <Col span={12}><Button style={{position: 'relative', top: '33vw', marginLeft: '10px', float:'left'}} onClick={() => window.location = "https://www.facebook.com/TEDxMMU/"}>Share</Button></Col>
 
                 {/* <div style={{backgroundColor: "white", height: '60vw', position: 'relative', top: '40vw'}}> */}
+                <ScrollableAnchor id={"1"}>
                 <div style={{position:'relative', height: '900px', top: '40vw', background: '#111111', padding: '50px 30px 30px 50px'}}>
                 <Row style={{marginTop: '2vw'}}>
                 <h1 style={{margin: 'auto', marginBottom: '2vw', color:'#fff'}}>About the Event</h1>
@@ -71,6 +73,8 @@ export default class MainApp extends Component {
                     </Col>
                 </Row>
                 </div>
+                </ScrollableAnchor>
+                <ScrollableAnchor id={"2"}>
                 <div style={{position: 'relative', top: '40vw', height: '900px', background: '#fff', padding: '50px 30px 30px 50px'}}>
                     <h1 style={{color: '#9c0331', margin: '20px'}}>TEDxMMU 2018</h1>
                     <Divider>When</Divider>
@@ -88,6 +92,8 @@ export default class MainApp extends Component {
                         <Clock deadline={Date.parse(new Date(2018, 3, 20, 17, 0, 0))}/>
                     </Row>
                 </div>
+                </ScrollableAnchor>
+                <ScrollableAnchor id={"3"}>
                 <div style={{position: 'relative', top: '40vw', height: '2000px', background: '#000', padding: '50px 30px 30px 50px'}}>
                     <h1 style={{color: '#fff', marginTop: '1vw'}}>Speakers</h1>
                     <Row> {/* First row for the first two speakers */}
@@ -208,6 +214,7 @@ export default class MainApp extends Component {
                         </Col>
                     </Row>
                 </div>
+                </ScrollableAnchor>
                 {/* <div style={{backgroundImage: 'url(\'./src/Assets/workspace2.jpg\')'}}> */}
                 <ScrollableAnchor id={"4"}>
                 <div style={{position: 'relative', top: '40vw', height: '900px', padding: '50px 30px 30px 50px', backgroundImage: 'url(\'./src/Assets/workspace2.jpg\')'}}>
@@ -215,8 +222,8 @@ export default class MainApp extends Component {
                             backgroundPosition:'center', position: 'fixed', display: 'block', top: 0, left: 0, zIndex: -2}}/> */}
                     <h1 style={{color: '#fff', margin: '20px'}}>Tickets</h1>
                     <Row>
-                        <Col span={12}><Button type="danger" size='large' icon='tag' style={{width: '200px', height: '65px', fontSize:'20px', float: 'right', marginRight:'80px'}}>Get Ticket</Button></Col>
-                        <Col span={12}><Button type="danger" size='large' icon='tags-o' style={{width: '220px', height: '65px', fontSize:'20px', float: 'left', marginLeft: '80px'}}>Reserve Multiple</Button></Col>
+                        <Col span={12}><Button type="danger" size='large' icon='tag' onClick={() => window.location = "https://goo.gl/7R2oHe"} style={{width: '200px', height: '65px', fontSize:'20px', float: 'right', marginRight:'80px'}}>Get Ticket</Button></Col>
+                        <Col span={12}><Button type="danger" size='large' icon='tags-o' onClick={() => window.location = "https://goo.gl/7R2oHe"} style={{width: '220px', height: '65px', fontSize:'20px', float: 'left', marginLeft: '80px'}}>Reserve Multiple</Button></Col>
                     </Row>
                     <Row>
                         <Card style={{marginLeft:'auto', marginRight:'auto', marginTop:'80px', width: '600px'}}>
@@ -226,8 +233,8 @@ export default class MainApp extends Component {
                         </Card>
                     </Row>
                     <Row>
-                        <Col span={12}><Button type="danger" size='large' icon='facebook' style={{width: '100px', height: '100px', fontSize:'40px', borderRadius: '50%', float: 'right', marginRight:'80px'}} /></Col>
-                        <Col span={12}><Button type="danger" size='large' icon='mail' style={{width: '100px', height: '100px', fontSize:'40px', borderRadius: '50%', float: 'left', marginLeft: '80px'}} /></Col>
+                        <Col span={12}><Button type="danger" size='large' icon='facebook' onClick={() => window.location = "https://www.facebook.com/TEDxMMU/"} style={{width: '100px', height: '100px', fontSize:'40px', borderRadius: '50%', float: 'right', marginRight:'80px'}} /></Col>
+                        <Col span={12}><Button type="danger" size='large' icon='twitter' onClick={() => window.location = "https://twitter.com/tedxmmu?lang=en"} style={{width: '100px', height: '100px', fontSize:'40px', borderRadius: '50%', float: 'left', marginLeft: '80px'}} /></Col>
                         
                         {/* <Col span={6}><Button type="danger" size='large' icon='facebook' style={{width: '100px', height: '100px', fontSize:'40px', borderRadius: '50%', float: 'right', marginLeft:'80px'}} /></Col>
                         <Col span={6}><Button type="danger" size='large' icon='twitter' style={{width: '100px', height: '100px', fontSize:'40px', borderRadius: '50%', float: 'right', marginLeft: '100px'}} /></Col>
@@ -236,6 +243,7 @@ export default class MainApp extends Component {
                     </Row>
                 </div>
                 </ScrollableAnchor>
+                <ScrollableAnchor id={"5"}>
                 <div style={{position: 'relative', top: '40vw', height: '500px', padding: '50px 30px 30px 50px', backgroundColor: '#fff'}}>
                     <h1 style={{color: '#9c0331', margin: '20px'}}>Sponsors</h1>
                     <Row style={{marginTop: '40px'}}>
@@ -249,6 +257,7 @@ export default class MainApp extends Component {
                         <Col span={8}><img src="./src/Assets/cyberviewLogo.png" style={{height: '100px', width: 'auto', margin: '30px'}} /></Col>
                     </Row>
                 </div>
+                </ScrollableAnchor>
             </Content>
             <Footer style={{ textAlign: 'center', zIndex: 0, position: 'relative', top: '40vw'}}>
                 All rights reserved ©2018 TEDxMMU
