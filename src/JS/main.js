@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ScrollableAnchor, { goToAnchor } from 'react-scrollable-anchor'
 import { Avatar, Button, Card, Carousel, Divider, Layout, Menu, Icon, Tooltip, Row, Col} from 'antd';
 const { Header, Content, Footer } = Layout
 
@@ -15,10 +16,11 @@ export default class MainApp extends Component {
     }
     handleClick(e){
         console.log('click ', e);
-        this.setState({
-          current: e.key.toString(),
-        });
+        goToAnchor(e);
       }
+    scroll(position){
+        goToAnchor(position);
+    }
     render(){
         return(
             <Layout className='layout'>      
@@ -41,7 +43,7 @@ export default class MainApp extends Component {
                 <img src = "./src/Assets/DSC_0605.jpg" style={{width: '100%', height: '100%', backgroundSize: "cover", 
                             backgroundPosition:'center', position: 'fixed', display: 'block', top: 0, left: 0, zIndex: 0}}/>
                 
-                <Col span={12}><Button type="primary" style={{position: 'relative', top: '33vw', marginRight: '10px', float:'right'}}>Get Tickets</Button></Col>
+                <Col span={12}><Button type="primary" style={{position: 'relative', top: '33vw', marginRight: '10px', float:'right'}} >Get Tickets</Button></Col>
                 <Col span={12}><Button style={{position: 'relative', top: '33vw', marginLeft: '10px', float:'left'}}>Share</Button></Col>
 
                 {/* <div style={{backgroundColor: "white", height: '60vw', position: 'relative', top: '40vw'}}> */}
@@ -207,10 +209,11 @@ export default class MainApp extends Component {
                     </Row>
                 </div>
                 {/* <div style={{backgroundImage: 'url(\'./src/Assets/workspace2.jpg\')'}}> */}
+                <ScrollableAnchor id={"4"}>
                 <div style={{position: 'relative', top: '40vw', height: '900px', padding: '50px 30px 30px 50px', backgroundImage: 'url(\'./src/Assets/workspace2.jpg\')'}}>
                     {/* <img src='./src/Assets/workspace2.jpg' style= {{width: '100%', height: '100%', backgroundSize: "cover", 
                             backgroundPosition:'center', position: 'fixed', display: 'block', top: 0, left: 0, zIndex: -2}}/> */}
-                    <h1 style={{color: '#9c0331', margin: '20px'}}>Tickets</h1>
+                    <h1 style={{color: '#fff', margin: '20px'}}>Tickets</h1>
                     <Row>
                         <Col span={12}><Button type="danger" size='large' icon='tag' style={{width: '200px', height: '65px', fontSize:'20px', float: 'right', marginRight:'80px'}}>Get Ticket</Button></Col>
                         <Col span={12}><Button type="danger" size='large' icon='tags-o' style={{width: '220px', height: '65px', fontSize:'20px', float: 'left', marginLeft: '80px'}}>Reserve Multiple</Button></Col>
@@ -232,9 +235,23 @@ export default class MainApp extends Component {
                         <Col span={6}><Button type="danger" size='large' icon='instagram' style={{width: '100px', height: '100px', fontSize:'40px', borderRadius: '50%', float: 'left', marginRight: '80px'}} /></Col> */}
                     </Row>
                 </div>
+                </ScrollableAnchor>
+                <div style={{position: 'relative', top: '40vw', height: '500px', padding: '50px 30px 30px 50px', backgroundColor: '#fff'}}>
+                    <h1 style={{color: '#9c0331', margin: '20px'}}>Sponsors</h1>
+                    <Row style={{marginTop: '40px'}}>
+                        <Col span={8}><span style={{height: '100px', width: 'auto', margin: '30px', fontWeight: 'bold'}}>Organised By: </span></Col>
+                        <Col span={8}><span style={{height: '110px', width: 'auto', margin: '30px', fontWeight: 'bold'}}>Platinum Sponsor: </span></Col>
+                        <Col span={8}><span style={{height: '100px', width: 'auto', margin: '30px', fontWeight: 'bold'}}>Silver Sponsor: </span></Col>
+                    </Row>
+                    <Row>
+                        <Col span={8}><img src="./src/Assets/IEEEBlue.png" style={{height: '100px', width: 'auto', margin: '30px'}} /></Col>
+                        <Col span={8}><img src="./src/Assets/SetiaHarumanLogo.png" style={{height: '100px', width: 'auto', margin: '30px'}} /></Col>
+                        <Col span={8}><img src="./src/Assets/cyberviewLogo.png" style={{height: '100px', width: 'auto', margin: '30px'}} /></Col>
+                    </Row>
+                </div>
             </Content>
             <Footer style={{ textAlign: 'center', zIndex: 0, position: 'relative', top: '40vw'}}>
-                All rights reserved ©2018 Multimedia University
+                All rights reserved ©2018 TEDxMMU
             </Footer>
             </Layout>
         );
