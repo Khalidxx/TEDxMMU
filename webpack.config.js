@@ -19,7 +19,7 @@ module.exports = {
   entry: paths.JS + '/index.js',
   output: {
     path: paths.DIST,
-    filename: 'app.bundle.js',
+    filename: 'bundle.js',
   },
   // specifiy plugins
   plugins: [
@@ -109,7 +109,7 @@ module.exports = {
     historyApiFallback: true, 
     inline: true,  
     hot: true
-},
+}
 
   // Dev server configuration 
   // devServer: {
