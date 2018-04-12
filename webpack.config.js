@@ -16,7 +16,7 @@ const paths = {
 
 // Webpack configuration
 module.exports = {
-  entry: __dirname + '/src/js/index.js',
+  entry: path.resolve(__dirname, 'src/js/index.js'),
   output: {
     path: paths.DIST,
     filename: 'bundle.js',
@@ -25,7 +25,7 @@ module.exports = {
   // specifiy plugins
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(paths.SRC, 'index.html'),
+      template: path.join(paths.SRC, 'index.html')
     }),
     //new ExtractTextPlugin('style.bundle.css'),
     new webpack.HotModuleReplacementPlugin(), // hot loading plugin
@@ -41,12 +41,6 @@ module.exports = {
           'babel-loader',
         ],
       },
-      // {
-      //   test: /\.css$/,
-      //   loader: ExtractTextPlugin.extract({
-      //     use: 'css-loader',
-      //   }),
-      // }
       {
         test: /\.css$/,
         use: [
@@ -59,9 +53,6 @@ module.exports = {
                     modules: true
                 }
             }, 
-            // {
-            //     loader: "postcss-loader"
-            // }
         ]
       },
       {
@@ -78,18 +69,6 @@ module.exports = {
             }
         }]
       },
-      // {
-      //   test: /\.less$/,
-      //   use: [
-      //     {loader: "style-loader"},
-      //     {loader: "css-loader"},
-      //     {loader: "less-loader",
-      //       options: {
-      //         modifyVars: themeVariables
-      //       }
-      //     }
-      //   ]
-      // },
       {
         test: /\.(png|jpg|gif)$/,
         use: [
@@ -111,10 +90,5 @@ module.exports = {
     inline: true,  
     hot: true
 }
-
-  // Dev server configuration 
-  // devServer: {
-  //   contentBase: paths.SRC,
-  // },
 };
 
