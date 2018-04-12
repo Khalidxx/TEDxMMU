@@ -16,7 +16,7 @@ const paths = {
 
 // Webpack configuration
 module.exports = {
-  entry: paths.JS + '/index.js',
+  entry: __dirname + '/src/js/index.js',
   output: {
     path: paths.DIST,
     filename: 'bundle.js',
