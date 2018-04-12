@@ -13,7 +13,8 @@
   "author": "khalidxx",
   "license": "ISC",
   "engines": {
-    "node": "8.9.4"
+    "node": "8.9.4",
+    "npm": "5.6.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
